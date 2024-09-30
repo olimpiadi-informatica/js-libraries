@@ -16,7 +16,7 @@ export async function api<T, Shape extends ZodRawShape>(
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      Cookie: typeof cookie === "string" ? cookie : "",
+      Cookie: cookie ?? "",
     },
     body: JSON.stringify(body),
   });
