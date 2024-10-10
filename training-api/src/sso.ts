@@ -9,6 +9,6 @@ const forumSsoSchema = z.object({
 
 export type ForumSso = z.infer<typeof forumSsoSchema>;
 
-export function getForumSso(payload: string, signature: string, cookie: string): Promise<ForumSso> {
-  return api("sso", { payload, sig: signature }, forumSsoSchema, cookie);
+export function getForumSso(payload: string, signature: string): Promise<ForumSso> {
+  return api("sso", { payload, sig: signature }, forumSsoSchema);
 }

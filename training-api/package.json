@@ -1,6 +1,6 @@
 {
   "name": "@olinfo/training-api",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "type": "module",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -8,21 +8,19 @@
   "author": "Alessandro Bortolin <bortolin.alessandro@outlook.it>",
   "scripts": {
     "lint": "biome check --write",
-    "watch": "tsup --watch",
-    "prebuild": "yarn lint && rm -rf dist",
-    "build": "tsup --minify",
-    "prepack": "yarn build"
+    "watch": "node build.js --watch",
+    "prebuild": "biome check && rm -rf dist",
+    "build": "node build.js",
+    "prepack": "node build.js"
   },
   "files": [
     "dist"
   ],
-  "tsup": {
-    "entry": [
-      "src/index.ts"
-    ],
-    "format": "esm",
-    "dts": true,
-    "sourcemap": true
+  "exports": {
+    ".": {
+      "react-server": "./dist/index-server.js",
+      "default": "./dist/index.js"
+    }
   },
   "dependencies": {
     "jwt-decode": "^4.0",
@@ -32,7 +30,11 @@
   "devDependencies": {
     "@biomejs/biome": "^1.8",
     "@types/node": "^22",
+    "next": "^14.2",
     "tsup": "^8.0",
     "typescript": "^5.4"
+  },
+  "peerDependencies": {
+    "next": ">=14"
   }
 }

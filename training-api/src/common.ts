@@ -1,6 +1,8 @@
 import z, { type ZodError, type ZodObject, type ZodRawShape } from "zod";
 import { fromZodError } from "zod-validation-error";
 
+import { getCookies } from "./cookies";
+
 export const BASE_URL =
   process.env.TRAINING_API_URL ??
   process.env.NEXT_PUBLIC_TRAINING_API_URL ??
@@ -10,13 +12,12 @@ export async function api<T, Shape extends ZodRawShape>(
   endpoint: string,
   body: object,
   schema: ZodObject<Shape, any, any, T, any>,
-  cookie?: string,
 ): Promise<T> {
   const resp = await fetch(`${BASE_URL}/${endpoint}`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      Cookie: cookie ?? "",
+      Cookie: getCookies(),
     },
     body: JSON.stringify(body),
   });
