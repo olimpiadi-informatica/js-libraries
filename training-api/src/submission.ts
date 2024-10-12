@@ -1,6 +1,6 @@
 import z from "zod";
 
-import { api } from "./common";
+import { api, optionalApi } from "./common";
 import { fileSchema } from "./file";
 import type { Task } from "./task";
 
@@ -55,13 +55,17 @@ export type Subtask = z.infer<typeof subtaskSchema>;
 export type Submission = z.infer<typeof submissionSchema>;
 export type SubmissionDetails = z.infer<typeof submissionDetailsSchema>;
 
-export async function getTaskSubmissions(task: string): Promise<Submission[]> {
-  const list = await api("submission", { action: "list", task_name: task }, taskSubmissionsSchema);
-  return list.submissions;
+export async function getTaskSubmissions(task: string): Promise<Submission[] | undefined> {
+  const list = await optionalApi(
+    "submission",
+    { action: "list", task_name: task },
+    taskSubmissionsSchema,
+  );
+  return list?.submissions;
 }
 
-export function getSubmission(id: number): Promise<SubmissionDetails> {
-  return api("submission", { action: "details", id }, submissionDetailsSchema);
+export function getSubmission(id: number): Promise<SubmissionDetails | undefined> {
+  return optionalApi("submission", { action: "details", id }, submissionDetailsSchema);
 }
 
 export async function submitBatch(task: Task, language: string, file: File): Promise<Submission> {

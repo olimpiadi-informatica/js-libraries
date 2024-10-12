@@ -44,3 +44,18 @@ export async function api<T, Shape extends ZodRawShape>(
   }
   return data as T;
 }
+
+export async function optionalApi<T, Shape extends ZodRawShape>(
+  endpoint: string,
+  body: object,
+  schema: ZodObject<Shape, any, any, T, any>,
+): Promise<T | undefined> {
+  try {
+    return await api(endpoint, body, schema);
+  } catch (err) {
+    if (err instanceof Error && err.message === "Not found") {
+      return undefined;
+    }
+    throw err;
+  }
+}

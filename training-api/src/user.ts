@@ -1,6 +1,6 @@
 import z from "zod";
 
-import { api } from "./common";
+import { api, optionalApi } from "./common";
 
 const scoreSchema = z.object({
   name: z.string(),
@@ -59,13 +59,19 @@ const meSchema = z.object({
 export type User = z.infer<typeof userSchema>;
 export type Ranking = z.infer<typeof rankingSchema>;
 
-export async function getMe(): Promise<User> {
-  const me = await api("user", { action: "me" }, meSchema);
-  return me.user;
+export async function getMe(): Promise<User | undefined> {
+  try {
+    const me = await api("user", { action: "me" }, meSchema);
+    return me.user;
+  } catch (err) {
+    if (err instanceof Error && err.message !== "Unauthorized") {
+      throw err;
+    }
+  }
 }
 
-export function getUser(username: string): Promise<User> {
-  return api("user", { action: "get", username }, userSchema);
+export function getUser(username: string): Promise<User | undefined> {
+  return optionalApi("user", { action: "get", username }, userSchema);
 }
 
 export function getRanking(page: number, pageSize = 20): Promise<Ranking> {

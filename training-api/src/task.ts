@@ -1,6 +1,6 @@
 import z from "zod";
 
-import { api } from "./common";
+import { optionalApi } from "./common";
 import type { File } from "./file";
 
 const attachmentSchema = z
@@ -31,6 +31,6 @@ const taskSchema = z.object({
 export type Tag = z.infer<typeof tag>;
 export type Task = z.infer<typeof taskSchema>;
 
-export function getTask(name: string): Promise<Task> {
-  return api("task", { action: "get", name }, taskSchema);
+export function getTask(name: string): Promise<Task | undefined> {
+  return optionalApi("task", { action: "get", name }, taskSchema);
 }

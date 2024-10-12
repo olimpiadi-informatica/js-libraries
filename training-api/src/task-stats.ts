@@ -1,6 +1,6 @@
 import z from "zod";
 
-import { api } from "./common";
+import { optionalApi } from "./common";
 
 const bestUserSchema = z.object({
   username: z.string(),
@@ -18,6 +18,6 @@ const taskStatsSchema = z.object({
 export type BestUser = z.infer<typeof bestUserSchema>;
 export type TaskStats = z.infer<typeof taskStatsSchema>;
 
-export function getTaskStats(name: string): Promise<TaskStats> {
-  return api("task", { action: "stats", name }, taskStatsSchema);
+export function getTaskStats(name: string): Promise<TaskStats | undefined> {
+  return optionalApi("task", { action: "stats", name }, taskStatsSchema);
 }
