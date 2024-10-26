@@ -12,9 +12,10 @@ export async function login(username: string, password: string, keep_signed: boo
       keep_signed,
     },
     z.object({}),
+    true,
   );
 }
 
 export async function logout() {
-  await api("user", { action: "logout" }, z.object({}));
+  await api("user", { action: "logout" }, z.object({}), true);
 }
