@@ -1,11 +1,13 @@
 import z, { type ZodError, type ZodType } from "zod";
 import { fromZodError } from "zod-validation-error";
 
+import { getCookies } from "./cookie";
+
 export const BASE_URL =
   process.env.TERRY_URL ?? process.env.NEXT_PUBLIC_TERRY_URL ?? "https://territoriali.olinfo.it/";
 
 export async function get<T>(endpoint: string, schema: ZodType<T, any, any>): Promise<T> {
-  const resp = await fetch(`${BASE_URL}/api/${endpoint}`);
+  const resp = await fetch(`${BASE_URL}/api/${endpoint}`, { headers: { Cookie: getCookies() } });
   if (!resp.ok) {
     throw new Error(`Error ${resp.status}: ${resp.statusText}`);
   }
@@ -43,6 +45,7 @@ export async function post<T>(
 
   const resp = await fetch(`${BASE_URL}/api/${endpoint}`, {
     method: "POST",
+    headers: { Cookie: getCookies() },
     body: formData,
   });
   if (!resp.ok) {
