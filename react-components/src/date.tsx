@@ -5,6 +5,7 @@ type DateProps = {
   date: Date;
   dateStyle?: Intl.DateTimeFormatOptions["dateStyle"] | "hidden";
   timeStyle?: Intl.DateTimeFormatOptions["timeStyle"] | "hidden";
+  locale?: string;
   className?: string;
 };
 
@@ -19,10 +20,13 @@ export function DateTime({
   date,
   dateStyle = "medium",
   timeStyle = "short",
+  locale,
   className,
 }: DateProps) {
-  const formatted = intlFormat(date, style(dateStyle, timeStyle));
-  const duration = intlFormatDistance(date, new Date());
+  const formatted = locale
+    ? intlFormat(date, style(dateStyle, timeStyle), { locale })
+    : intlFormat(date, style(dateStyle, timeStyle));
+  const duration = intlFormatDistance(date, new Date(), { locale });
 
   return (
     <abbr title={duration} className={clsx(className)}>
@@ -35,10 +39,13 @@ export function DateDistance({
   date,
   dateStyle = "medium",
   timeStyle = "short",
+  locale,
   className,
 }: DateProps) {
-  const formatted = intlFormat(date, style(dateStyle, timeStyle));
-  const duration = intlFormatDistance(date, new Date());
+  const formatted = locale
+    ? intlFormat(date, style(dateStyle, timeStyle), { locale })
+    : intlFormat(date, style(dateStyle, timeStyle));
+  const duration = intlFormatDistance(date, new Date(), { locale });
 
   return (
     <abbr title={formatted} className={clsx(className)}>
