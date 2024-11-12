@@ -14,8 +14,6 @@ import {
 import clsx from "clsx";
 import { CircleAlert } from "lucide-react";
 
-import { FormFieldError } from "./error";
-
 type FormContextProps = {
   state: Record<string, any>;
   setState: Dispatch<SetStateAction<Record<string, any>>>;
@@ -32,9 +30,11 @@ export const FormContext = createContext<FormContextProps>({
 
 type FormField<State> = ReactNode | ((state: Partial<State>) => ReactNode);
 
+type FormError<State> = { error: string; field: keyof State } | never;
+
 type FormProps<State> = {
   defaultValue?: Partial<State>;
-  onSubmit: (value: State) => Promise<void> | void;
+  onSubmit: (value: State) => Promise<FormError<State>> | FormError<State>;
   disabled?: boolean;
   className?: string;
   children: FormField<State> | FormField<State>[];
@@ -60,9 +60,10 @@ export function Form<State extends Record<string, any>>({
     try {
       await onSubmit?.(state as State);
     } catch (err) {
-      if (err instanceof FormFieldError) {
-        const input = formRef.current?.querySelector(`[name="${err.field}"]`) as HTMLInputElement;
-        input?.setCustomValidity(err.message);
+      const field = ((err as Error).cause as any)?.field as string | undefined;
+      if (field) {
+        const input = formRef.current?.querySelector(`[name="${field}"]`) as HTMLInputElement;
+        input?.setCustomValidity((err as Error).message);
         setTimeout(() => input?.reportValidity());
       } else {
         throw err;
