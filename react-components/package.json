@@ -1,6 +1,6 @@
 {
   "name": "@olinfo/react-components",
-  "version": "0.8.0",
+  "version": "0.8.2",
   "type": "module",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -14,7 +14,7 @@
     "prepack": "tsup --minify"
   },
   "dependencies": {
-    "@olinfo/training-api": "^0.2",
+    "@olinfo/training-api": "^0.8",
     "clsx": "^2.1",
     "date-fns": "^3.6",
     "lucide-react": ">=0.395, <1",

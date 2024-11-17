@@ -30,11 +30,9 @@ export const FormContext = createContext<FormContextProps>({
 
 type FormField<State> = ReactNode | ((state: Partial<State>) => ReactNode);
 
-type FormError<State> = { error: string; field: keyof State } | never;
-
 type FormProps<State> = {
   defaultValue?: Partial<State>;
-  onSubmit: (value: State) => Promise<FormError<State>> | FormError<State>;
+  onSubmit: (value: State) => Promise<void> | void;
   disabled?: boolean;
   className?: string;
   children: FormField<State> | FormField<State>[];
@@ -141,6 +139,7 @@ type BaseFieldProps = {
 
 export function BaseField({ label, validation, children }: BaseFieldProps) {
   return (
+    // biome-ignore lint/a11y/noLabelWithoutControl: children contains the control
     <label className="form-control mb-1 w-full">
       <div className="label">
         <span className="label-text">{label}</span>
