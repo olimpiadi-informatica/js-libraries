@@ -91,6 +91,7 @@ export function NavbarSubmenu({ title, children }: { title: ReactNode; children:
     <li className={clsx(style.navbarSubmenu, "md:dropdown")}>
       <div
         tabIndex={0}
+        // biome-ignore lint/a11y/useSemanticElements: https://daisyui.com/components/dropdown/#method-2-using-css-focus
         role="button"
         className={clsx("menu-dropdown-toggle", open && !isScreenMd && "menu-dropdown-show")}
         onClick={(e) => e.stopPropagation()}>

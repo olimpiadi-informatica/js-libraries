@@ -15,6 +15,7 @@ export function DropdownButton({ className, children, ariaLabel }: Props & { ari
   return (
     <div
       tabIndex={0}
+      // biome-ignore lint/a11y/useSemanticElements: https://daisyui.com/components/dropdown/#method-2-using-css-focus
       role="button"
       className={clsx("btn btn-ghost no-animation w-full flex-nowrap", className)}
       aria-label={ariaLabel}>
