@@ -11,6 +11,7 @@ export async function post(url: string, body: any, setCookie?: boolean) {
       Cookie: token ? `training_token=${token.value}` : "",
     },
     body: JSON.stringify(body),
+    cache: "no-store",
   });
 
   const setCookieHeader = resp.headers.get("set-cookie");
