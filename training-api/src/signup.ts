@@ -26,5 +26,6 @@ export async function signup(
       recaptcha_response: recaptchaResponse,
     },
     z.object({}),
+    true,
   );
 }
