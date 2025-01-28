@@ -23,18 +23,7 @@ const userSchema = z.object({
   username: z.string(),
   first_name: z.string(),
   last_name: z.string(),
-  institute: z
-    .union([
-      z.object({
-        id: z.number(),
-        name: z.string(),
-        city: z.string(),
-        province: z.string(),
-        region: z.string(),
-      }),
-      z.object({}),
-    ])
-    .transform((institute) => ("id" in institute ? institute : undefined)),
+  institute: z.string().nullish(),
 
   mail_hash: z.string(),
   join_date: z.number().transform((d) => new Date(d * 1000)),
