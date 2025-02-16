@@ -1,6 +1,6 @@
 {
   "name": "@olinfo/react-components",
-  "version": "0.10.0",
+  "version": "0.10.2",
   "type": "module",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -28,7 +28,6 @@
     "typescript-plugin-css-modules": "^5.1"
   },
   "peerDependencies": {
-    "@types/react": "^18",
-    "react": "^18"
+    "react": "^18 || ^19"
   }
 }
