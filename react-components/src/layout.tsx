@@ -43,7 +43,10 @@ export function Layout({ children }: { children: ReactNode }) {
     return () => window.removeEventListener("unhandledrejection", handleException);
 
     function handleException(e: PromiseRejectionEvent) {
-      notify({ type: "alert-error", message: e.reason.message });
+      const message = e.reason.message;
+      if (message === "NEXT_REDIRECT") return;
+
+      notify({ type: "alert-error", message });
     }
   }, [notify]);
 
