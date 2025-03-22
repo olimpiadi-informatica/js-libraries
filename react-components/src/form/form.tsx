@@ -123,7 +123,11 @@ export function useField<T>(
     value: state[field],
     setValue: (value: T | undefined) => {
       setState((state) => ({ ...state, [field]: value }));
-      setValidation(value === undefined ? undefined : options?.validate?.(value));
+      try {
+        setValidation(value === undefined ? undefined : options?.validate?.(value));
+      } catch (err) {
+        setValidation((err as Error).message);
+      }
     },
     validation,
     globalDisabled,

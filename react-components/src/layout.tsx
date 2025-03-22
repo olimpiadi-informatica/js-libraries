@@ -54,7 +54,7 @@ export function Layout({ children }: { children: ReactNode }) {
     <NotificationsContext.Provider value={{ notify }}>
       <div className="flex min-h-dvh w-full flex-col">
         {children}
-        <div className="toast left-0 z-50 items-end">
+        <div className="toast right-0 z-50 max-w-sm w-full">
           {notifications.map((props, i) => (
             <Notifications {...props} key={i} />
           ))}
@@ -69,7 +69,7 @@ function Notifications({ type, message, timestamp }: NotificationsProps) {
 
   return (
     <WithinTimeRange end={end}>
-      <div className={clsx("alert max-w-sm", type)}>
+      <div className={clsx("alert", type)}>
         <div className="flex gap-4">
           {type === "alert-success" ? (
             <Check className="flex-none" />
