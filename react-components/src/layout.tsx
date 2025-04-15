@@ -90,6 +90,10 @@ export function useNotifications() {
     (message: string) => notify({ type: "alert-success", message }),
     [notify],
   );
+  const notifyWarning = useCallback(
+    (message: string) => notify({ type: "alert-warning", message }),
+    [notify],
+  );
   const notifyError = useCallback(
     (err: Error) => notify({ type: "alert-error", message: err.message }),
     [notify],
@@ -98,5 +102,6 @@ export function useNotifications() {
   return {
     notifySuccess,
     notifyError,
+    notifyWarning,
   };
 }
