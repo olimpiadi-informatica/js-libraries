@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
 
 import { formatISO } from "date-fns";
 import type { LucideIcon } from "lucide-react";
@@ -42,6 +42,7 @@ function InputField<T>({
   max,
   validationErrorMap,
   autoComplete,
+  refine,
   ...props
 }: InputFieldProps<T>) {
   const [ref, setRef] = useState<HTMLInputElement | null>(null);
@@ -49,6 +50,20 @@ function InputField<T>({
     validate,
     validationErrorMap,
   });
+
+  const postProcess = useCallback(
+    (s: string) => {
+      if (s === "") {
+        return undefined;
+      }
+      const actualValue = fromString(s);
+      if (refine) {
+        return refine(actualValue);
+      }
+      return actualValue;
+    },
+    [refine, fromString],
+  );
 
   return (
     <BaseField label={label} validation={validation}>
@@ -60,7 +75,7 @@ function InputField<T>({
           type={type ?? "text"}
           name={field}
           value={value === undefined ? "" : toString(value)}
-          onChange={(e) => setValue(e.target.value === "" ? undefined : fromString(e.target.value))}
+          onChange={(e) => setValue(postProcess(e.target.value))}
           min={min === undefined ? undefined : toString(min)}
           max={max === undefined ? undefined : toString(max)}
           disabled={disabled || globalDisabled || pending}
