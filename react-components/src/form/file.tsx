@@ -36,6 +36,7 @@ export function SingleFileField({
     </BaseField>
   );
 }
+SingleFileField.displayName = "SingleFileField";
 
 type MultipleFilesProps = {
   field: string;
@@ -79,3 +80,4 @@ export function MultipleFileField({
     </BaseField>
   );
 }
+MultipleFileField.displayName = "MultipleFileField";

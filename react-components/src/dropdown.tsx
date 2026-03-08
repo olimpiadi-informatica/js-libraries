@@ -10,6 +10,7 @@ type Props = {
 export function Dropdown({ className, children }: Props) {
   return <div className={clsx("dropdown max-w-full flex-none", className)}>{children}</div>;
 }
+Dropdown.displayName = "Dropdown";
 
 export function DropdownButton({ className, children, ariaLabel }: Props & { ariaLabel?: string }) {
   return (
@@ -22,10 +23,12 @@ export function DropdownButton({ className, children, ariaLabel }: Props & { ari
     </div>
   );
 }
+DropdownButton.displayName = "DropdownButton";
 
 export function DropdownMenu({ className, children }: Props) {
   return <ul className={clsx("menu dropdown-content !transition-all", className)}>{children}</ul>;
 }
+DropdownMenu.displayName = "DropdownMenu";
 
 export function DropdownItem({ children }: { children: ReactNode }) {
   const onClick = useCallback((ev: MouseEvent<HTMLLIElement>) => {
@@ -37,3 +40,4 @@ export function DropdownItem({ children }: { children: ReactNode }) {
 
   return <li onClick={onClick}>{children}</li>;
 }
+DropdownItem.displayName = "DropdownItem";

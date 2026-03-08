@@ -12,7 +12,7 @@ const highlighter = await createHighlighter({
   langs: [srs],
 });
 
-export default function CodeHighlight({ code, lang, inline, className }: CodeProps) {
+function CodeHighlight({ code, lang, inline, className }: CodeProps) {
   const loadedLangs = highlighter.getLoadedLanguages();
   if (lang !== "srs" && lang !== "text" && !loadedLangs.includes(lang)) {
     throw highlighter.loadLanguage(lang);
@@ -44,3 +44,6 @@ export default function CodeHighlight({ code, lang, inline, className }: CodePro
     <div dangerouslySetInnerHTML={{ __html: html }} className={clsx("not-prose", className)} />
   );
 }
+CodeHighlight.displayName = "CodeHighlight";
+
+export default CodeHighlight;

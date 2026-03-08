@@ -34,3 +34,4 @@ export function Button({ onClick, icon: Icon, disabled, className, children }: P
     </button>
   );
 }
+Button.displayName = "Button";

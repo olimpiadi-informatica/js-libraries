@@ -47,10 +47,12 @@ export function Navbar({ color, children }: NavbarProps) {
     </div>
   );
 }
+Navbar.displayName = "Navbar";
 
 export function NavbarBrand({ children }: { children: ReactNode }) {
   return <div className={style.navbarBrand}>{children}</div>;
 }
+NavbarBrand.displayName = "NavbarBrand";
 
 export function NavbarMenu({ children }: { children: ReactNode }) {
   return (
@@ -61,6 +63,7 @@ export function NavbarMenu({ children }: { children: ReactNode }) {
     </div>
   );
 }
+NavbarMenu.displayName = "NavbarMenu";
 
 export function NavbarSubmenu({ title, children }: { title: ReactNode; children: ReactNode }) {
   const [open, setOpen] = useState(false);
@@ -112,11 +115,14 @@ export function NavbarSubmenu({ title, children }: { title: ReactNode; children:
     </li>
   );
 }
+NavbarSubmenu.displayName = "NavbarSubmenu";
 
 export function NavbarMenuItem({ children }: { children: ReactNode }) {
   return <li>{children}</li>;
 }
+NavbarMenuItem.displayName = "NavbarMenuItem";
 
 export function NavbarContent({ children }: { children: ReactNode }) {
   return <div className={style.navbarContent}>{children}</div>;
 }
+NavbarContent.displayName = "NavbarContent";

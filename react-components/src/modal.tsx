@@ -33,3 +33,4 @@ export const Modal = forwardRef(function Modal(
     </dialog>
   );
 });
+Modal.displayName = "Modal";

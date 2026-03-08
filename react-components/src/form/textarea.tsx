@@ -42,3 +42,4 @@ export function TextAreaField({
     </BaseField>
   );
 }
+TextAreaField.displayName = "TextAreaField";

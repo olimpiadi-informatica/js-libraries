@@ -5,3 +5,4 @@ export function Tabs({ children }: { children: ReactNode }) {
     <nav className="tabs-boxed tabs mx-auto flex w-fit flex-wrap justify-center">{children}</nav>
   );
 }
+Tabs.displayName = "Tabs";

@@ -31,3 +31,4 @@ export function CheckboxField({ field, label, disabled, optional }: Props) {
     </div>
   );
 }
+CheckboxField.displayName = "CheckboxField";

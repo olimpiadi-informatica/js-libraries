@@ -18,6 +18,7 @@ export function UsernameField(props: TextAutocompleteFieldProps) {
     />
   );
 }
+UsernameField.displayName = "UsernameField";
 
 export function EmailField(props: TextAutocompleteFieldProps) {
   return (
@@ -31,12 +32,14 @@ export function EmailField(props: TextAutocompleteFieldProps) {
     />
   );
 }
+EmailField.displayName = "EmailField";
 
 function PasswordField(
   props: Omit<TextFieldProps, "label" | "type" | "icon"> & { label?: string },
 ) {
   return <TextField {...props} label={props.label ?? "Password"} type="password" icon={KeyRound} />;
 }
+PasswordField.displayName = "PasswordField";
 
 export function NewPasswordField(props: TextAutocompleteFieldProps) {
   return (
@@ -48,6 +51,7 @@ export function NewPasswordField(props: TextAutocompleteFieldProps) {
     />
   );
 }
+NewPasswordField.displayName = "NewPasswordField";
 
 export function CurrentPasswordField(props: TextAutocompleteFieldProps) {
   return (
@@ -58,6 +62,7 @@ export function CurrentPasswordField(props: TextAutocompleteFieldProps) {
     />
   );
 }
+CurrentPasswordField.displayName = "CurrentPasswordField";
 
 export function FirstNameField(props: TextAutocompleteFieldProps) {
   return (
@@ -69,6 +74,7 @@ export function FirstNameField(props: TextAutocompleteFieldProps) {
     />
   );
 }
+FirstNameField.displayName = "FirstNameField";
 
 export function LastNameField(props: TextAutocompleteFieldProps) {
   return (
@@ -80,3 +86,4 @@ export function LastNameField(props: TextAutocompleteFieldProps) {
     />
   );
 }
+LastNameField.displayName = "LastNameField";

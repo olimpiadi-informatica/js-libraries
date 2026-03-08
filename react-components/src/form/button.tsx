@@ -25,6 +25,7 @@ export function SubmitButton({ disabled, icon: Icon, className, children }: Subm
     </button>
   );
 }
+SubmitButton.displayName = "SubmitButton";
 
 type FormButtonProps = {
   disabled?: boolean;
@@ -54,3 +55,4 @@ export function FormButton({
     </button>
   );
 }
+FormButton.displayName = "FormButton";

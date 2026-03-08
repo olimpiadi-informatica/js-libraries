@@ -20,6 +20,7 @@ export function Code({ lang, ...props }: CodeProps) {
     </Suspense>
   );
 }
+Code.displayName = "Code";
 
 function PlainCode({ code, inline, className }: Omit<CodeProps, "lang">) {
   if (inline) return <code className={className}>{code}</code>;
@@ -39,3 +40,4 @@ function PlainCode({ code, inline, className }: Omit<CodeProps, "lang">) {
     </div>
   );
 }
+PlainCode.displayName = "PlainCode";

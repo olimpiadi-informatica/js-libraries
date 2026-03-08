@@ -87,6 +87,7 @@ function InputField<T>({
     </BaseField>
   );
 }
+InputField.displayName = "InputField";
 
 export type TextFieldProps = Omit<
   InputFieldProps<string>,
@@ -103,12 +104,14 @@ export function TextField(props: TextFieldProps) {
     />
   );
 }
+TextField.displayName = "TextField";
 
 export type NumberFieldProps = Omit<InputFieldProps<number>, "pattern" | "fromString" | "toString">;
 
 export function NumberField(props: NumberFieldProps) {
   return <InputField<number> {...props} type="number" fromString={Number} toString={String} />;
 }
+NumberField.displayName = "NumberField";
 
 export type DateFieldProps = Omit<InputFieldProps<Date>, "pattern" | "fromString" | "toString">;
 
@@ -122,3 +125,4 @@ export function DateField(props: DateFieldProps) {
     />
   );
 }
+DateField.displayName = "DateField";

@@ -14,6 +14,7 @@ export function WithinTimeRange({ start, end, children }: Props) {
 
   return visible && !hidden && children;
 }
+WithinTimeRange.displayName = "WithinTimeRange";
 
 export function useIsAfter(time?: Date) {
   const isAfter = useCallback(() => time && isPast(time), [time]);

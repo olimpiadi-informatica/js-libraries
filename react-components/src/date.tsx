@@ -34,6 +34,7 @@ export function DateTime({
     </abbr>
   );
 }
+DateTime.displayName = "DateTime";
 
 export function DateDistance({
   date,
@@ -53,3 +54,4 @@ export function DateDistance({
     </abbr>
   );
 }
+DateDistance.displayName = "DateDistance";

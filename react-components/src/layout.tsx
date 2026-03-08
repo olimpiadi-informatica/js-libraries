@@ -63,6 +63,7 @@ export function Layout({ children }: { children: ReactNode }) {
     </NotificationsContext.Provider>
   );
 }
+Layout.displayName = "Layout";
 
 function Notifications({ type, message, timestamp }: NotificationsProps) {
   const end = useMemo(() => addSeconds(timestamp, 10), [timestamp]);
@@ -82,6 +83,7 @@ function Notifications({ type, message, timestamp }: NotificationsProps) {
     </WithinTimeRange>
   );
 }
+Notifications.displayName = "Notifications";
 
 export function useNotifications() {
   const { notify } = useContext(NotificationsContext);

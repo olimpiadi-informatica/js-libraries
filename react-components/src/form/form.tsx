@@ -90,6 +90,7 @@ export function Form<State extends Record<string, any>>({
     </FormContext.Provider>
   );
 }
+Form.displayName = "Form";
 
 export function useField<T>(
   field: string,
@@ -157,3 +158,4 @@ export function BaseField({ label, validation, children }: BaseFieldProps) {
     </label>
   );
 }
+BaseField.displayName = "BaseField";

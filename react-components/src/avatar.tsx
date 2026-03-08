@@ -23,3 +23,4 @@ export function Avatar({ username, url, size, className }: Props) {
     </div>
   );
 }
+Avatar.displayName = "Avatar";

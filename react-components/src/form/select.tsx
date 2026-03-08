@@ -54,3 +54,4 @@ export function SelectField({
     </BaseField>
   );
 }
+SelectField.displayName = "SelectField";

@@ -16,3 +16,4 @@ export function Menu({ fallback, className, children }: MenuProps) {
     </ul>
   );
 }
+Menu.displayName = "Menu";
