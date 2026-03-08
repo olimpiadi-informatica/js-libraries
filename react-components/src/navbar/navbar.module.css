@@ -16,6 +16,10 @@
   @apply md:!hidden;
 }
 
+.navbar:not(:has(.navbarMenu)) .navbarMenuIcon {
+  @apply hidden;
+}
+
 .navbarMenu {
   grid-area: menu;
 }

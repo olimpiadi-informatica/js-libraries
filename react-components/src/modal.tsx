@@ -1,4 +1,4 @@
-import { forwardRef, type ReactNode, type Ref } from "react";
+import type { ReactNode, Ref } from "react";
 
 import clsx from "clsx";
 import { X } from "lucide-react";
@@ -7,12 +7,10 @@ type ModalProps = {
   title: string;
   className?: string;
   children: ReactNode;
+  ref: Ref<HTMLDialogElement>;
 };
 
-export const Modal = forwardRef(function Modal(
-  { title, className, children }: ModalProps,
-  ref: Ref<HTMLDialogElement>,
-) {
+export function Modal({ title, className, children, ref }: ModalProps) {
   return (
     <dialog ref={ref} className="modal">
       <div className={clsx("modal-box", className)}>
@@ -32,5 +30,5 @@ export const Modal = forwardRef(function Modal(
       </form>
     </dialog>
   );
-});
+}
 Modal.displayName = "Modal";

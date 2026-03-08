@@ -52,7 +52,7 @@ export function Layout({ children }: { children: ReactNode }) {
 
   return (
     <NotificationsContext.Provider value={{ notify }}>
-      <div className="flex min-h-dvh w-full flex-col">
+      <div className="flex min-h-dvh w-full flex-col isolate">
         {children}
         <div className="toast right-0 z-50 max-w-sm w-full">
           {notifications.map((props, i) => (

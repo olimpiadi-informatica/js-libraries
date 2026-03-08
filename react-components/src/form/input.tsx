@@ -24,6 +24,7 @@ type InputFieldProps<T> = {
   pattern?: string;
   disabled?: boolean;
   optional?: boolean;
+  autoFocus?: boolean;
   validationErrorMap?: { [K in keyof ValidityState]?: string };
 };
 
