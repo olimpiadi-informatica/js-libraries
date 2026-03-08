@@ -1,8 +1,7 @@
-import { Suspense, lazy } from "react";
+import { lazy, Suspense } from "react";
 
 import type { BundledLanguage } from "shiki";
 
-// @ts-ignore
 import style from "./code.module.css";
 
 const CodeHighlight = lazy(() => import("./highlight"));

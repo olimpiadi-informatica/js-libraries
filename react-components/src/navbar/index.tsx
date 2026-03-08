@@ -10,7 +10,6 @@ import {
 import clsx from "clsx";
 import { Menu, X } from "lucide-react";
 
-// @ts-ignore
 import style from "./navbar.module.css";
 
 type NavbarProps = {
@@ -29,6 +28,7 @@ export function Navbar({ color, children }: NavbarProps) {
 
   return (
     <div className={clsx(style.navbar, color)}>
+      {/** biome-ignore lint/a11y/noStaticElementInteractions: cannot use button due to Safari bug */}
       <div onClick={onClick}>
         <label
           className={clsx(style.navbarMenuIcon, "btn btn-ghost swap swap-rotate")}
@@ -91,7 +91,6 @@ export function NavbarSubmenu({ title, children }: { title: ReactNode; children:
     <li className={clsx(style.navbarSubmenu, "md:dropdown")}>
       <div
         tabIndex={0}
-        // biome-ignore lint/a11y/useSemanticElements: https://daisyui.com/components/dropdown/#method-2-using-css-focus
         role="button"
         className={clsx("menu-dropdown-toggle", open && !isScreenMd && "menu-dropdown-show")}
         onClick={(e) => e.stopPropagation()}>

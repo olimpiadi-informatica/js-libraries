@@ -14,18 +14,18 @@
     "prepack": "tsup --minify"
   },
   "dependencies": {
-    "clsx": "^2.1",
-    "date-fns": "^4.1",
-    "lucide-react": ">=0.483 <1",
-    "shiki": "^3.2"
+    "clsx": "^2.1.1",
+    "date-fns": "^4.1.0",
+    "lucide-react": ">=0.562.0 <1",
+    "shiki": "^4.0.1"
   },
   "devDependencies": {
-    "@biomejs/biome": "^1.8",
-    "@olinfo/tailwind": "^0.1",
-    "@types/react": "^19",
-    "tsup": "^8.0",
-    "typescript": "^5.4",
-    "typescript-plugin-css-modules": "^5.1"
+    "@biomejs/biome": "2.4.6",
+    "@olinfo/tailwind": "^0.1.0",
+    "@types/react": "^19.2.14",
+    "tsup": "^8.5.1",
+    "typescript": "^5.9.3",
+    "typescript-plugin-css-modules": "^5.2.0"
   },
   "peerDependencies": {
     "react": "^18 || ^19"

@@ -3,7 +3,6 @@ import { useMemo } from "react";
 import clsx from "clsx";
 import { createHighlighter } from "shiki";
 
-// @ts-ignore
 import style from "./code.module.css";
 import type { CodeProps } from "./index";
 import srs from "./srs";
