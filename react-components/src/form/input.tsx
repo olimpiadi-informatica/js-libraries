@@ -1,6 +1,6 @@
 import { useCallback, useState } from "react";
 
-import { formatISO } from "date-fns";
+import { formatISO, isValid, lightFormat } from "date-fns";
 import type { LucideIcon } from "lucide-react";
 
 import { BaseField, useField } from "./form";
@@ -122,8 +122,20 @@ export function DateField(props: DateFieldProps) {
       {...props}
       type="date"
       fromString={(value) => new Date(value)}
-      toString={(value) => formatISO(value, { representation: "date" })}
+      toString={(value) => (isValid(value) ? formatISO(value, { representation: "date" }) : "")}
     />
   );
 }
 DateField.displayName = "DateField";
+
+export function DateTimeField(props: DateFieldProps) {
+  return (
+    <InputField<Date>
+      {...props}
+      type="datetime-local"
+      fromString={(value) => new Date(value)}
+      toString={(value) => (isValid(value) ? lightFormat(value, "yyyy-MM-dd'T'HH:mm") : "")}
+    />
+  );
+}
+DateTimeField.displayName = "DateTimeField";

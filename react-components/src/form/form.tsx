@@ -1,10 +1,10 @@
 import {
   createContext,
   type Dispatch,
-  type FormEvent,
   Fragment,
   type ReactNode,
   type SetStateAction,
+  type SubmitEvent,
   useContext,
   useEffect,
   useRef,
@@ -49,7 +49,7 @@ export function Form<State extends Record<string, any>>({
   const [state, setState] = useState(defaultValue ?? {});
   const [pending, setPending] = useState(false);
 
-  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: SubmitEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     if (!formRef.current?.checkValidity()) return;
