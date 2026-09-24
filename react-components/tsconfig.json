@@ -1,7 +1,8 @@
 {
   "compilerOptions": {
     "module": "esnext",
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
+    "ignoreDeprecations": "6.0",
     "target": "esnext",
     "declaration": true,
     "declarationDir": "dist",

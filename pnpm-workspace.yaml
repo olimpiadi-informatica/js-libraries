@@ -2,8 +2,7 @@ packages:
   - react-components
   - tailwind
 
-ignoredBuiltDependencies:
-  - '@biomejs/biome'
-  - '@parcel/watcher'
-  - esbuild
-  - less
+allowBuilds:
+  '@parcel/watcher': false
+  esbuild: false
+  less: false
